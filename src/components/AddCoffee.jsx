@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 const AddCoffee = () => {
   const handleFormData = (e) => {
     e.preventDefault();
@@ -19,11 +21,13 @@ const AddCoffee = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        if (data.insertedId) {
+          Swal.fire("Good job!", "You coffee has been added!", "success");
+        }
       });
   };
   return (
-    <div className="flex justify-center mt-20 w-1/2 mx-auto">
+    <div className="flex justify-center mt-20 mb-20 w-1/2 mx-auto">
       <div>
         <div className="rounded-lg bg-[#F4F3F0] p-8 shadow-lg lg:col-span-3 lg:p-12">
           <h2 className="text-center mt-4 mb-4 font-normal text-4xl text-gray-600">
